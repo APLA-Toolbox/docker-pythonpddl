@@ -1,2 +1,3 @@
-# docker-pythonpddl
+# Docker PythonPDDL
+
 A Dockerized version of PythonPDDL
