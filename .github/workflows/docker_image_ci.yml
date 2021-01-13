@@ -11,5 +11,5 @@ jobs:
         run: docker-compose -f docker/docker-compose.yml up --build --force-recreate
       
       - name: Check if container is running
-        run: [[ $(docker ps -qf "name=docker_python-pddl") != "" ]] && echo "Ok" || exit 1
+        run: /bin/bash -c "[[ $(docker ps -qf "name=docker_python-pddl") != "" ]] && echo "Ok" || exit 1"
 
