@@ -18,7 +18,7 @@ A Dockerized version of PythonPDDL
 ### Terminal 1
 
 - Go to the repo directory: `cd docker-pythonpddl`
-- Build and run the docker: `docker-compose -f docker/docker-compose.yml`
+- Build and run the docker: `docker-compose -f docker/docker-compose.yml up`
 - Wait for termination of the process... (Line: "Attaching to docker python-pddl_1")
 ### Terminal 2
 
