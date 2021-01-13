@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+  
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the docker-compose stack
+        run: docker-compose -f docker/docker-compose.yml
+      
+      - name: Check if container is running
+        run: docker ps -qf "name=docker_python-pddl"
+
+      - name: Run the IPC script
+        run: docker exec -it $(docker ps -qf "name=docker_python-pddl") /bin/bash
+        run: python3 -c "from jupyddl.__init__ import *"
+        run: exit()
+        run: exit
