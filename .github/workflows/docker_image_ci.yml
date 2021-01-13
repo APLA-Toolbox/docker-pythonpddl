@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the docker-compose stack
-        run: docker-compose -f docker/docker-compose.yml up
+        run: docker-compose -f docker/docker-compose.yml up --build --force-recreate
       
       - name: Check if container is running
         run: docker ps -qf "name=docker_python-pddl"
@@ -17,7 +17,7 @@ jobs:
         run: docker exec -it $(docker ps -qf "name=docker_python-pddl") /bin/bash
 
       - name: Run Python3 Imports
-        run: python3 -c 'from jupyddl.__init__ import *
+        run: python3 -c "from jupyddl.__init__ import *"
       
       - name: Exit Python3
         run: exit()
