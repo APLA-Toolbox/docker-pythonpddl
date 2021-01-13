@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the docker-compose stack
-        run: docker-compose -f docker/docker-compose.yml
+        run: docker-compose -f docker/docker-compose.yml up
       
       - name: Check if container is running
         run: docker ps -qf "name=docker_python-pddl"
