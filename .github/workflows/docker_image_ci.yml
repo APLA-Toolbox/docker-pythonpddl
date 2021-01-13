@@ -17,8 +17,11 @@ jobs:
       - name: Check if container is running
         run: docker ps -qf "name=docker_python-pddl"
 
-      - name: Run the IPC script
-        run: docker exec -it $(docker ps -qf "name=docker_python-pddl") /bin/bash
-        run: python3 -c "from jupyddl.__init__ import *"
+      - name: Run the Test Suite
+        run: docker exec -it $(docker ps -qf "name=docker_python-pddl") /bin/bash -c "python3 -c 'from jupyddl.__init__ import *''
+      
+      - name: Exit Python3
         run: exit()
+      
+      - name: Exit Docker
         run: exit
